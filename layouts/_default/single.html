@@ -1,0 +1,16 @@
+{{ partial "header.html" . }}
+
+<div id="author" >
+    {{with .Params.LastModifierDisplayName}}
+        <i class='fas fa-user'></i> <a href="mailto:{{ $.Params.LastModifierEmail }}">{{ . }}</a>
+        <span class="publish-date">{{with $.PublishDate}}{{ .Format "2006. 1. 2. 03:04" }}{{end}}</span>
+        <button class="btn copy-url" onclick="copyUrlToClipboard()">URL 복사</button>
+    {{end}}
+</div>
+
+{{ .Content }}
+
+
+
+
+{{ partial "footer.html" . }}

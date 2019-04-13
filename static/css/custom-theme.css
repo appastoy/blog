@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+a#logo {
+    font-family: "Comfortaa", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+    font-size: 24px;
+    font-style: bold;
+    color: orange;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {  
+/* CSS Statements that only apply on webkit-based browsers (Chrome, Safari, etc.) */  
+    a#logo {
+        background: linear-gradient(to right, #ffaa00, #aaff00, #00ffff, #ffbb00);
+        background-size: 400% 100%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-animation: Gradient 30s ease infinite;
+        animation: Gradient 30s ease infinite;
+    }
+
+    @-webkit-keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+    
+    @keyframes Gradient {
+        0% {
+            background-position: 0% 50%
+        }
+        50% {
+            background-position: 100% 50%
+        }
+        100% {
+            background-position: 0% 50%
+        }
+    }
+}
+
+div#body-inner, div#post-list { 
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 700px !important;
+    text-align: initial;
+}
+
+div#chapter > div#body-inner > h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+span.date {
+    float: right;
+}
+
+div#post-list > ul {
+    list-style: none;
+    padding: 0px 0px;
+    margin-top: 0px;
+}
+
+div#post-list > ul > li, div#post-list > h5 {
+    border-width: 1px;
+    border-color: #e0e0e0;
+    border-bottom-style: solid;
+    padding: 5px 0px
+}
+
+li.post-list-item.current-page {
+    font-weight: bold;
+}
+
+ul.pagination {
+    text-align: center;
+}
+
+li.page-item {
+    display: inline-block; 
+    margin: 0px 2px;
+}
+
+li.page-item.active {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+span.publish-date {
+    margin-left: 20px;
+}
+
+div#author {
+    border-width: 1px;
+    border-color: #e0e0e0;
+    border-bottom-style: solid;
+    padding-bottom: 20px;
+    margin-bottom: 27.2px;
+}
+
+button.copy-url {
+    float: right;
+}
+
+li.post-list-item > span > a:link, li.post-list-item > span > a:visited {
+    color: #323232;
+}

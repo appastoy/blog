@@ -1,0 +1,11 @@
+{{if not .Params.chapter}}
+<div id="comment">
+    <script src="https://utteranc.es/client.js"
+        repo="appastoy/appastoy.github.io"
+        issue-term="{{with .File}}{{ .UniqueID }}{{end}}"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+    </script>
+</div>
+{{end}}

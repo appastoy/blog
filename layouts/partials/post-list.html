@@ -1,0 +1,52 @@
+<div id="post-list">
+{{ if ne (len .Pages) 0 }}
+    {{ $paginator := .Paginate .Pages.ByPublishDate.Reverse }}
+    {{ template "render-posts" dict "pages" $paginator.Pages "currentPage" . }}
+    {{ template "_internal/pagination.html" . }}
+</div>
+{{ else if ne (len .Sections) 0 }}
+    {{ $pages := .Pages }}
+    {{ range .Sections }}
+        {{ $pages = $pages | append .Pages }}
+    {{ end }}
+    {{ $paginator := .Paginate $pages.ByPublishDate.Reverse }}
+    {{ template "render-posts" dict "pages" $paginator.Pages "currentPage" . }}
+    {{ template "_internal/pagination.html" . }}
+{{ else if not .Params.chapter }}
+    {{ $currentPage := . }}
+    {{ $currentPageIndex := 0 }}
+    {{ $currentCount := 0 }}
+    {{ with .Parent }}
+        <h5><a href="{{.Permalink}}">"{{.Title}}"</a> 카테고리 글 </h5>
+        {{ $pages := .Pages.ByPublishDate.Reverse }}
+        {{ range $pages }}
+            {{ if eq $currentPage . }}
+                {{ $currentPageIndex = $currentCount }}
+            {{ else }}
+                {{ $currentCount = $currentCount | add 1 }}
+            {{ end }}
+        {{ end }}
+        {{ if gt $currentPageIndex 2 }}
+            {{ $startIndex := (sub $currentPageIndex 2) }}
+            {{ $pages = first 5 (after $startIndex $pages) }}
+        {{ else }}
+            {{ $pages = (first 5 $pages) }}
+        {{ end }}
+        {{ template "render-posts" dict "pages" $pages "currentPage" $currentPage }}
+    {{ end }}
+{{ end }}
+</div>
+
+<!-- templates -->
+{{ define "render-posts" }}
+    {{ $pages := .pages }}
+    {{ $currentPage := .currentPage }}
+    <ul>
+        {{range $pages}}
+            <li class="post-list-item{{ if eq . $currentPage }} current-page{{end}}">
+                <span><a class="highlight" href="{{ .Permalink }}">{{ .Title }}</a></span>
+                <span class="date">{{ .Date.Format "2006. 1. 2." }}</span>
+            </li>
+        {{end}}
+    </ul>
+{{ end }}

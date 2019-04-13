@@ -1,0 +1,20 @@
+baseURL = "/"
+languageCode = "ko-KR"
+defaultContentLanguage = "ko"
+
+title = "Creative Flow"
+theme = "hugo-theme-learn"
+metaDataFormat = "yaml"
+defaultContentLanguageInSubdir= true
+hasCJKLanguage = true
+
+[params]
+  editURL = "https://github.com/appastoy/blog/content/"
+  description = "Creative Flow"
+  author = "appastoy"
+  showVisitedLinks = false
+  disableBreadcrumb = false
+  disableNextPrev = true
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
