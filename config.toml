@@ -9,7 +9,7 @@ defaultContentLanguageInSubdir= true
 hasCJKLanguage = true
 
 [params]
-  editURL = "https://github.com/appastoy/blog/content/"
+  editURL = "https://github.com/appastoy/blog/tree/master/content"
   description = "Creative Flow"
   author = "appastoy"
   showVisitedLinks = false
